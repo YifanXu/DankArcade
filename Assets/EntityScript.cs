@@ -5,6 +5,7 @@ using UnityEngine;
 public class EntityScript : MonoBehaviour
 {
     public float hp;
+    public float hpDecay;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class EntityScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!GameControllerScript.staticInstance.paused) Damage(hpDecay * Time.deltaTime);
     }
 
     public void Damage (float damageHP)

@@ -23,6 +23,7 @@ public class JunkBehavior : MonoBehaviour
         if(this.transform.position.x <= goal)
         {
             GameControllerScript.staticInstance.LoseLife();
+            Destroy(this.gameObject);
         }
 
         if ((this.transform.position.y < -4 && this.dv.y < 0) || (this.transform.position.y > 4 || this.dv.y > 0)) this.dv.y = -this.dv.y;

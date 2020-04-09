@@ -5,17 +5,22 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     //private readonly Bounds screenBounds = new Bounds(new Vector3(), new Vector3(16,8));
-    private const float leftBound = -7;
-    private const float rightBound = 7;
+    private const float leftBound = -8;
+    private const float rightBound = 8;
     private const float botBound = -4;
     private const float topBound = 4;
 
     public float speed = 10f;
     public float standardProjCD = 0.5f;
     public GameObject projectileTemplate;
+    public GameObject droneTemplate;
     public Vector3 projectileDV;
     public Vector3 projectileOffset;
     public Color projectileColor;
+    public float droneCharge = 0f;
+    public float maxDroneCharge = 4f;
+    public float droneChargePerSecond = 0.1f;
+    public float droneDeployTime = 1f;
 
     private Collider2D collider;
     private Vector3 colliderSize;
@@ -68,6 +73,25 @@ public class PlayerScript : MonoBehaviour
                 newProjectile.GetComponent<ProjectileBehavior>().dv = this.projectileDV + movementDelta;
                 newProjectile.GetComponent<ProjectileBehavior>().parentCollider = this.gameObject;
                 newProjectile.GetComponent<SpriteRenderer>().color = this.projectileColor;
+            }
+        }
+
+        //Charge Drone
+        if (!GameControllerScript.staticInstance.paused && this.droneCharge < this.maxDroneCharge)
+        {
+            this.droneCharge += this.droneChargePerSecond * Time.deltaTime;
+            UIScript.staticInstance.ChangeDroneCount(droneCharge);
+        }
+
+        // Deploy Drones
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            if(this.droneCharge > 1f)
+            {
+                droneCharge -= 1f;
+                UIScript.staticInstance.ChangeDroneCount(droneCharge);
+                var newDrone = Instantiate(droneTemplate, this.transform.position, Quaternion.identity);
+                newDrone.GetComponent<DroneScript>().deployTime = GameControllerScript.staticInstance.timer + droneDeployTime;
             }
         }
     }

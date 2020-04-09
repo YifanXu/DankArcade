@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DroneScript.cs" />
     <Compile Include="Assets\EntityScript.cs" />
     <Compile Include="Assets\GameControllerScript.cs" />
     <Compile Include="Assets\JunkBehavior.cs" />

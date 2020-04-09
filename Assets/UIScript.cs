@@ -9,6 +9,9 @@ public class UIScript : MonoBehaviour
 
     public GameObject JunkKillCount;
     public GameObject lifeCount;
+    public GameObject droneCount;
+    public GameObject droneBar;
+    public float droneBarTotalLength = 200f;
     public GameObject GameOverPanel;
 
     private int junkKilled = 0;
@@ -35,5 +38,12 @@ public class UIScript : MonoBehaviour
     public void ChangeLifeCount (int lifeCount)
     {
         this.lifeCount.GetComponent<Text>().text = lifeCount.ToString();
+    }
+
+    public void ChangeDroneCount (float droneCharge)
+    {
+        float completeDroneCharges = Mathf.Floor(droneCharge);
+        droneCount.GetComponent<Text>().text = $"x{completeDroneCharges}";
+        droneBar.GetComponent<RectTransform>().sizeDelta = new Vector2(droneBarTotalLength * (droneCharge - completeDroneCharges), 0);
     }
 }
