@@ -157,8 +157,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 3
   persistTime: 5
-  minJunkSpawnTime: 0.5
+  minJunkSpawnTime: 0.7
+  minDroneSpawnTime: 10
   JunkPrefab: {fileID: 3493891511768372258, guid: aba2b6f58589c254aa2303e05a5b5129,
+    type: 3}
+  DronePrefab: {fileID: 7040218398535235145, guid: a51101d6e7cfa30488b0333fb57ed083,
     type: 3}
   paused: 0
 --- !u!1 &378271979
@@ -488,6 +491,7 @@ GameObject:
   - component: {fileID: 676495391}
   - component: {fileID: 676495390}
   - component: {fileID: 676495389}
+  - component: {fileID: 676495393}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -583,6 +587,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &676495393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676495388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fbd229e1c74eae47bd92b42cf88a932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
+  hpDecay: 0
 --- !u!1 &869304785
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963235783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.76, y: -0.04, z: 0}
+  m_LocalPosition: {x: -5.76, y: 3.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

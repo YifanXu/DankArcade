@@ -26,6 +26,7 @@ public class JunkBehavior : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if ((this.transform.position.y < -4 && this.dv.y < 0) || (this.transform.position.y > 4 || this.dv.y > 0)) this.dv.y = -this.dv.y;
+        float size = this.GetComponent<Collider2D>().bounds.size.x;
+        if ((this.transform.position.y < size / 2 - 4 && this.dv.y < 0) || (this.transform.position.y > 4 - size / 2 || this.dv.y > 0)) this.dv.y = -this.dv.y;
     }
 }
